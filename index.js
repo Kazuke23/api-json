@@ -9,7 +9,7 @@ app.use(urlencoded({extended: true}))
 app.use(json())
 
 app.use(cors())
-app.use('/v1/signos', router);
+app.use('https://api-json-two.vercel.app/v1/signos', router);
 
 app.listen(4000, ()=>{
     console.log('listening at port 4000');
