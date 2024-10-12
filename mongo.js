@@ -1,20 +1,17 @@
 const { MongoClient } = require('mongodb');
-require('dotenv').config();
+require('dotenv').config(); // Cargar variables de entorno
 
-// Usar directamente la URI que proporcionaste
-const uri = process.env.MONGO_URI || 'mongodb://atlas-sql-6647594de817fe271accc3c6-ikd9x.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin';
+const uri = process.env.MONGO_URI; // Obtener el URI desde el archivo .env
 
 const client = new MongoClient(uri);
 
-const validatedb = async () => {
+const connectDB = async () => {
   try {
     await client.connect();
-    console.log('Conexión exitosa a MongoDB Atlas');
+    console.log('Conectado a MongoDB local exitosamente');
   } catch (error) {
-    console.error('Error conectando a MongoDB Atlas:', error);
+    console.error('Error conectando a MongoDB:', error);
   }
-}
+};
 
-validatedb();
-
-module.exports = client;
+module.exports = { client, connectDB };
